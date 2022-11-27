@@ -1,0 +1,242 @@
+create databases (databases name);
+
+
+mysql> show databases;
+
++--------------------+
+| Database           |
++--------------------+
+| dbms               |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use dbms
+Database changed
+mysql> create table student (s_id int primary key, name varchar(54),s_college_name text);
+ERROR 1050 (42S01): Table 'student' already exists
+mysql> drop student;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'student' at line 1
+mysql> drop  table student;
+Query OK, 0 rows affected (0.30 sec)
+
+mysql> create table student (s_id int primary key, name varchar(54),s_college_name text);
+Query OK, 0 rows affected (0.12 sec)
+
+mysql> insert into student (s_name,name,s_college_name) values (1,'abhishek',BJScollege),(2,'rahul',baramathicollege),(3,'king',beed);
+ERROR 1054 (42S22): Unknown column 's_name' in 'field list'
+mysql> insert into student (s_name,name,s_college_name) values (1,'abhishek','BJScollege'),(2,'rahul','baramathicollege'),(3,'king','beed');
+ERROR 1054 (42S22): Unknown column 's_name' in 'field list'
+mysql> insert into student (s_id,name,s_college_name) values (1,'abhishek','BJScollege'),(2,'rahul','baramathicollege'),(3,'king','beed');
+Query OK, 3 rows affected (0.03 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select* from student;
++------+----------+------------------+
+| s_id | name     | s_college_name   |
++------+----------+------------------+
+|    1 | abhishek | BJScollege       |
+|    2 | rahul    | baramathicollege |
+|    3 | king     | beed             |
++------+----------+------------------+
+3 rows in set (0.00 sec)
+
+mysql> create table techear (t_id int primary key,t_name varchar(54),t_subject text);
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> insert into techear (t_id,t_name,t_subject) values (1,'sunjay','DS'),(2,'patil','DBMS')'(3,'joshi','java'),(4,'sanket','cn');
+    '> ^X
+    '>
+         ------------------------------------------------
+          |                                              |
+          |                                              |
+          |                                              |
+          |      set b  route,driver,b_d_table,bus,viwe; |
+        -------------------------------------------------
+                                
+mysql> create table route (rno int primary key,sorurce varchar (56),destination varchar(65),no_of_station int);
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> insert into route values(1,'pune','wagoli',12);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into route values(2,'mumbai','ala',10);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into route values(3,'chenai','kolkata',11);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into route values(4,'rajesthan','beed',05);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into route values(5,'ramnuger','kashmir',05);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select* from route;
++-----+-----------+-------------+---------------+
+| rno | sorurce   | destination | no_of_station |
++-----+-----------+-------------+---------------+
+|   1 | pune      | wagoli      |            12 |
+|   2 | mumbai    | ala         |            10 |
+|   3 | chenai    | kolkata     |            11 |
+|   4 | rajesthan | beed        |             5 |
+|   5 | ramnuger  | kashmir     |             5 |
++-----+-----------+-------------+---------------+
+5 rows in set (0.00 sec)
+mysql> create table bus(busno int primary key, buscapcity int,deport_name varchar(66),rno int references route (rno));
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> insert into bus values (1,70,'pune',1);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into bus values (2,60,'mumbai',2);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into bus values (3,45,'pune',3);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into bus values (4,80,'kolkath',5);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into bus values (5,80,'beed',4);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select * from bus;
++-------+------------+-------------+------+
+| busno | buscapcity | deport_name | rno  |
++-------+------------+-------------+------+
+|     1 |         70 | pune        |    1 |
+|     2 |         60 | mumbai      |    2 |
+|     3 |         45 | pune        |    3 |
+|     4 |         80 | kolkath     |    5 |
+|     5 |         80 | beed        |    4 |
++-------+------------+-------------+------+
+5 rows in set (0.00 sec)
+
+mysql> select * from route;
++-----+-----------+-------------+---------------+
+| rno | sorurce   | destination | no_of_station |
++-----+-----------+-------------+---------------+
+|   1 | pune      | wagoli      |            12 |
+|   2 | mumbai    | ala         |            10 |
+|   3 | chenai    | kolkata     |            11 |
+|   4 | rajesthan | beed        |             5 |
+|   5 | ramnuger  | kashmir     |             5 |
++-----+-----------+-------------+---------------+
+5 rows in set (0.00 sec)
+
+mysql> insert into driver values (1,'sam','122','pune',18);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into driver values (2,'rahul','434','wagholi',35);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into driver values (3,'kiran','500','vimannuger',26);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into driver values (4,'ram','50','rahu',36);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into driver values (5,'shithal','10','beed',19);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from driver;
++------+---------+------+------------+------+
+| d_no | d_name  | i_no | address    | age  |
++------+---------+------+------------+------+
+|    1 | sam     |  122 | pune       |   18 |
+|    2 | rahul   |  434 | wagholi    |   35 |
+|    3 | kiran   |  500 | vimannuger |   26 |
+|    4 | ram     |   50 | rahu       |   36 |
+|    5 | shithal |   10 | beed       |   19 |
++------+---------+------+------------+------+
+5 rows in set (0.00 sec)
+
+mysql> insert into b_d_table values (1,5,'2022-10-12','night');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into b_d_table values (2,4,'2022-10-12','day');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into b_d_table values (3,3,'2022-10-13','day');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into b_d_table values (1,2,'2022-10-13','night');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into b_d_table values (2,1,'2022-10-13','night');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from b_d_table;
++------+------+--------------+-------+
+| bno  | dno  | date_of_duty | shift |
++------+------+--------------+-------+
+|    1 |    5 | 2022-10-12   | night |
+|    2 |    4 | 2022-10-12   | day   |
+|    3 |    3 | 2022-10-13   | day   |
+|    1 |    2 | 2022-10-13   | night |
+|    2 |    1 | 2022-10-13   | night |
++------+------+--------------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select * from bus;
++-------+------------+-------------+------+
+| busno | buscapcity | deport_name | rno  |
++-------+------------+-------------+------+
+|     1 |         70 | pune        |    1 |
+|     2 |         60 | mumbai      |    2 |
+|     3 |         45 | pune        |    3 |
+|     4 |         80 | kolkath     |    5 |
+|     5 |         80 | beed        |    4 |
++-------+------------+-------------+------+
+5 rows in set (0.00 sec)
+
+mysql> select * from rute;
+ERROR 1146 (42S02): Table 'dbms.rute' doesn't exist
+mysql> select * from route;
++-----+-----------+-------------+---------------+
+| rno | sorurce   | destination | no_of_station |
++-----+-----------+-------------+---------------+
+|   1 | pune      | wagoli      |            12 |
+|   2 | mumbai    | ala         |            10 |
+|   3 | chenai    | kolkata     |            11 |
+|   4 | rajesthan | beed        |             5 |
+|   5 | ramnuger  | kashmir     |             5 |
++-----+-----------+-------------+---------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from drive;
+ERROR 1146 (42S02): Table 'dbms.drive' doesn't exist
+mysql> select * from driver;
++------+---------+------+------------+------+
+| d_no | d_name  | i_no | address    | age  |
++------+---------+------+------------+------+
+|    1 | sam     |  122 | pune       |   18 |
+|    2 | rahul   |  434 | wagholi    |   35 |
+|    3 | kiran   |  500 | vimannuger |   26 |
+|    4 | ram     |   50 | rahu       |   36 |
+|    5 | shithal |   10 | beed       |   19 |
++------+---------+------+------------+------+
+5 rows in set (0.00 sec)
+
+mysql> create view v1 as
+    -> select* from driver where age > 40;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> select* from v1;
+Empty set (0.02 sec)
+
+mysql> select* from driver where age>25;
++------+--------+------+------------+------+
+| d_no | d_name | i_no | address    | age  |
++------+--------+------+------------+------+
+|    2 | rahul  |  434 | wagholi    |   35 |
+|    3 | kiran  |  500 | vimannuger |   26 |
+|    4 | ram    |   50 | rahu       |   36 |
++------+--------+------+------------+------+
+3 rows in set (0.00 sec)
+
