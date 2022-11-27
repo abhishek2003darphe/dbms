@@ -1,0 +1,151 @@
+mysql>  create table student1 (sno int primary key,sname char(56),sclass char(57),sadd char(34));
+mysql>  create table subject (scode varchar(10) primary key, subname varchar(78));
+mysql> create table stud_sub (s_no integer references student (sno),scode varchar(20) references subject(scode),mark integer);
+Query OK, 0 rows affected (0.10 sec)
+
+
+mysql> insert into student1 values (1,'amol','fybca','pune');
+Query OK, 1 row affected (0.38 sec)
+
+mysql> insert into student1 values (2,'archana','fybca','pune');
+Query OK, 1 row affected (0.07 sec)
+
+mysql> insert into student1 values (3,'kiran','sybca','pune');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into student1 values (4,'omkar','sybca','pune');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into student1 values (5,'suresh','tybca','pune');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into student1 values (6,'reena','tybca','mumbai');
+Query OK, 1 row affected (0.17 sec)
+  mysql> select * from student1;
++-----+---------+--------+--------+
+| sno | sname   | sclass | sadd   |
++-----+---------+--------+--------+
+|   1 | amol    | fybca  | pune   |
+|   2 | archana | fybca  | pune   |
+|   3 | kiran   | sybca  | pune   |
+|   4 | omkar   | sybca  | pune   |
+|   5 | suresh  | tybca  | pune   |
+|   6 | reena   | tybca  | mumbai |
++-----+---------+--------+--------+
+6 rows in set (0.04 sec)
+**************************************************************this is fist table **********************************************************************************************************
+mysql> insert into subject values ('BCA-301','Ds');
+Query OK, 1 row affected (0.09 sec)
+
+mysql> insert into subject values ('BCA-302','ARDBMS');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into subject values ('BCA-303','SE');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into subject values ('BCA-304','CN');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into subject values ('BCA-305','LAB-I');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into subject values ('BCA-306','LAB-II');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into subject values ('BCA-101','c');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into subject values ('BCA-501','java');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select* from subject;
++---------+---------+
+| scode   | subname |
++---------+---------+
+| BCA-101 | c       |
+| BCA-301 | Ds      |
+| BCA-302 | ARDBMS  |
+| BCA-303 | SE      |
+| BCA-304 | CN      |
+| BCA-305 | LAB-I   |
+| BCA-306 | LAB-II  |
+| BCA-501 | java    |
++---------+---------+
+8 rows in set (0.00 sec)
+************************************************************************this is secned table*****************************************************************************
+
+mysql> insert into stud_sub values(3,'BCA-301',60);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into stud_sub values(3,'BCA-302',80);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into stud_sub values(3,'BCA-303',50);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into stud_sub values(3,'BCA-304',70);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into stud_sub values(3,'BCA-305',86);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into stud_sub values(3,'BCA-306',76);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into stud_sub values(3,'BCA-301',60);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into stud_sub values(3,'BCA-302',40);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into stud_sub values(4,'BCA-301',40);
+Query OK, 1 row affected (0.03 sec) 
+
+mysql> insert into stud_sub values(4,'BCA-302',60);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into stud_sub values(4,'BCA-303',50);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into stud_sub values(4,'BCA-304',70);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into stud_sub values(4,'BCA-305',46);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into stud_sub values(1,'BCA-101',60);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into stud_sub values(2,'BCA-101',80);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into stud_sub values(5,'BCA-501',70);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into stud_sub values(6,'BCA-501',80);
+Query OK, 1 row affected (0.06 sec)
+mysql> select* from stud_sub;
++------+---------+------+
+| s_no | scode   | mark |
++------+---------+------+
+|    3 | BCA-301 |   60 |
+|    3 | BCA-302 |   80 |
+|    3 | BCA-303 |   50 |
+|    3 | BCA-304 |   70 |
+|    3 | BCA-305 |   86 |
+|    3 | BCA-306 |   76 |
+|    3 | BCA-301 |   60 |
+|    3 | BCA-302 |   40 |
+|    4 | BCA-301 |   40 |
+|    4 | BCA-302 |   60 |
+|    4 | BCA-303 |   50 |
+|    4 | BCA-304 |   70 |
+|    4 | BCA-305 |   46 |
+|    4 | BCA-306 |   56 |
+|    1 | BCA-101 |   60 |
+|    2 | BCA-101 |   80 |
+|    5 | BCA-501 |   70 |
+|    6 | BCA-501 |   80 |
++------+---------+------+
+18 rows in set (0.02 sec)
+
